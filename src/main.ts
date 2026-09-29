@@ -440,7 +440,7 @@ export default class PollinationsPlugin extends Plugin {
 			const file = await this.saveImage(prompt, image.bytes, image.extension, view);
 			if (editor) {
 				const link = this.app.fileManager.generateMarkdownLink(file, view?.file?.path ?? file.path);
-				editor.replaceRange((editor.getLine(editor.getCursor("to").line) ? "\n\n" : "\n") + link + "\n", editor.getCursor("to"));
+				editor.replaceRange((editor.getLine(editor.getCursor("to").line) ? "\n\n" : "\n") + "!" + link + "\n", editor.getCursor("to"));
 			}
 			new Notice("Pollinations: saved " + file.path, 5000);
 		} catch (error) {
@@ -454,6 +454,9 @@ export default class PollinationsPlugin extends Plugin {
 	async saveImage(prompt: string, bytes: ArrayBuffer, extension: string, view: MarkdownFileInfo | null): Promise<TFile> {
 		const folder = this.settings.imageFolder || (view?.file?.parent?.path ?? "");
 		const noteFolder = folder === "/" ? "" : folder;
+		if (noteFolder && !this.app.vault.getAbstractFileByPath(noteFolder)) {
+			await this.app.vault.createFolder(noteFolder);
+		}
 		const taken = this.app.vault
 			.getFiles()
 			.filter((file) => (file.parent?.path ?? "") === noteFolder)
