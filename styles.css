@@ -1,0 +1,22 @@
+/* Pollinations */
+
+.pollinations-progress {
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+}
+
+.pollinations-preview {
+	max-width: 100%;
+	margin: 0.5em 0;
+	border-radius: var(--radius-s);
+}
+
+.pollinations-code {
+	font-size: var(--font-ui-large);
+	letter-spacing: 0.1em;
+	font-weight: 600;
+}
+
+.pollinations-error {
+	color: var(--text-error);
+}

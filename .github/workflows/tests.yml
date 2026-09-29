@@ -1,0 +1,26 @@
+name: Tests
+
+# Runs on pull requests and on demand, so a fork only spends its Actions budget
+# on work that is about to be merged.
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Type check, test and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - run: npm install
+      - name: Type check
+        run: npm run typecheck
+      - name: Test the pure modules
+        run: npm test
+      - name: Build main.js
+        run: npm run build
