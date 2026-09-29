@@ -812,7 +812,7 @@ var PollinationsPlugin = class extends import_obsidian.Plugin {
       const file = await this.saveImage(prompt, image.bytes, image.extension, view);
       if (editor) {
         const link = this.app.fileManager.generateMarkdownLink(file, (_b = (_a = view == null ? void 0 : view.file) == null ? void 0 : _a.path) != null ? _b : file.path);
-        editor.replaceRange((editor.getLine(editor.getCursor("to").line) ? "\n\n" : "\n") + link + "\n", editor.getCursor("to"));
+        editor.replaceRange((editor.getLine(editor.getCursor("to").line) ? "\n\n" : "\n") + "!" + link + "\n", editor.getCursor("to"));
       }
       new import_obsidian.Notice("Pollinations: saved " + file.path, 5e3);
     } catch (error) {
@@ -826,6 +826,9 @@ var PollinationsPlugin = class extends import_obsidian.Plugin {
     var _a, _b, _c;
     const folder = this.settings.imageFolder || ((_c = (_b = (_a = view == null ? void 0 : view.file) == null ? void 0 : _a.parent) == null ? void 0 : _b.path) != null ? _c : "");
     const noteFolder = folder === "/" ? "" : folder;
+    if (noteFolder && !this.app.vault.getAbstractFileByPath(noteFolder)) {
+      await this.app.vault.createFolder(noteFolder);
+    }
     const taken = this.app.vault.getFiles().filter((file) => {
       var _a2, _b2;
       return ((_b2 = (_a2 = file.parent) == null ? void 0 : _a2.path) != null ? _b2 : "") === noteFolder;
