@@ -14,9 +14,20 @@ notes, paying with your own Pollen.
 - **Retries and plain-language errors** - 429s, server errors and network hiccups
   are retried with backoff; every failure turns into one readable sentence.
 
+## Requirements and disclosures
+
+- **An account and pollen are needed.** Generation is billed to the key you paste
+  or sign in with; the plugin has no free tier of its own. Create a key at
+  `enter.pollinations.ai/keys`, or sign in with a device code.
+- **Network use.** The plugin talks to `gen.pollinations.ai` for generation and
+  `enter.pollinations.ai` for sign-in, and to no other host.
+- **Keys stay on your device**, in this plugin's `data.json`. There is no
+  telemetry and no analytics of any kind.
+- License: MIT.
+
 ## Install
 
-**From the community plugin directory** (once the submission is approved)
+**From the community plugin directory** (once it is listed)
 
 1. `Settings > Community plugins > Browse` and search for **Pollinations**.
 2. Install, then enable it.

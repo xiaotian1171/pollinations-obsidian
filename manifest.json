@@ -1,11 +1,10 @@
 {
-	"id": "pollinations",
-	"name": "Pollinations",
-	"version": "1.0.0",
-	"minAppVersion": "1.0.0",
-	"description": "Generate text and images with Pollinations inside your notes, paying with your own Pollen.",
-	"author": "xiaotian1171",
-	"authorUrl": "https://github.com/xiaotian1171",
-	"fundingUrl": "https://github.com/xiaotian1171/pollinations-obsidian",
-	"isDesktopOnly": false
+  "id": "pollinations",
+  "name": "Pollinations",
+  "version": "1.0.0",
+  "minAppVersion": "1.13.8",
+  "description": "Generate text and images with Pollinations inside your notes, paying with your own Pollen.",
+  "author": "xiaotian1171",
+  "authorUrl": "https://github.com/xiaotian1171",
+  "isDesktopOnly": false
 }
